@@ -4,9 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.ShareActionProvider;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.support.v7.widget.ShareActionProvider;
 
 
 public class DetailActivity extends ActionBarActivity {
@@ -33,10 +33,10 @@ public class DetailActivity extends ActionBarActivity {
     }
 
     private Intent createShareIntent() {
-            return new Intent(Intent.ACTION_SEND)
-                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET)
-                    .setType("text/plain")
-                    .putExtra(Intent.EXTRA_TEXT, DetailActivityFragment.mForecastStr + "#SunshineApp");
+        return new Intent(Intent.ACTION_SEND)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET)
+                .setType("text/plain")
+                .putExtra(Intent.EXTRA_TEXT, DetailActivityFragment.mForecastStr + "#SunshineApp");
     }
 
     @Override

@@ -35,8 +35,8 @@ import java.util.ArrayList;
  * A placeholder fragment containing a simple view.
  */
 public class ForecastFragment extends Fragment {
-    private ArrayAdapter<String> mForecastAdapter;
     public final static String EXTRA = "weatherDetail";
+    private ArrayAdapter<String> mForecastAdapter;
 
     public ForecastFragment() {
     }
@@ -97,11 +97,10 @@ public class ForecastFragment extends Fragment {
         return rootView;
     }
 
-    private void updateWeather(){
+    private void updateWeather() {
         new FetchWeatherTask().execute(PreferenceManager.getDefaultSharedPreferences(getActivity()).
-                getString("location",getString(R.string.pref_default_location)));
+                getString("location", getString(R.string.pref_default_location)));
     }
-
 
 
     class FetchWeatherTask extends AsyncTask<String, Void, String[]> {
@@ -184,14 +183,15 @@ public class ForecastFragment extends Fragment {
         public String getReadableDateString(long time) {
             return new SimpleDateFormat("EEE MMM dd").format(time);
         }
+
         public String minMAx(double min, double max) {
             SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
             String unit = pref.getString("temperature_units", getString(R.string.pref_default_unit));
             if (!getString(R.string.pref_default_unit).equals(unit)) {
-                min = 9/5 * min + 32;
-                max = 9/5 * max + 32;
+                min = 9 / 5 * min + 32;
+                max = 9 / 5 * max + 32;
             }
-            return Math.round(min) + "/" + Math.round(max) ;
+            return Math.round(min) + "/" + Math.round(max);
         }
 
         public String[] getWeatherDataFromJson(String forecastJsonStr, int numDays)
@@ -215,7 +215,7 @@ public class ForecastFragment extends Fragment {
                 String day = getReadableDateString(dateTime);
                 String description = dayForecast.getJSONArray(OWM_WEATHER).getJSONObject(0).getString(OWM_DESCRIPTION);
                 String highAndLow = minMAx((dayForecast.getJSONObject(OWM_TEMPERATURE).getDouble(OWM_MAX)),
-                                            (dayForecast.getJSONObject(OWM_TEMPERATURE).getDouble(OWM_MIN)));
+                        (dayForecast.getJSONObject(OWM_TEMPERATURE).getDouble(OWM_MIN)));
 
                 resultString[i] = day + " - " + description + " - " + highAndLow;
             }

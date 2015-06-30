@@ -2,9 +2,9 @@ package com.project.zee.sunshine;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -43,6 +43,7 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
 
     }
+
     public void callLocation() {
         String location = PreferenceManager.getDefaultSharedPreferences(this).
                 getString("location", getString(R.string.pref_default_location));
