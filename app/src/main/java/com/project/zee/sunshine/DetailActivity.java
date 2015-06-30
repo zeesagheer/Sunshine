@@ -33,7 +33,6 @@ public class DetailActivity extends ActionBarActivity {
     }
 
     private Intent createShareIntent() {
-        int iintegeroma;
             return new Intent(Intent.ACTION_SEND)
                     .addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET)
                     .setType("text/plain")
